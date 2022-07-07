@@ -21,6 +21,19 @@ class Admin::SessionsController < Devise::SessionsController
 
   protected
   
+  #ログイン後の遷移先
+  
+  def after_sign_in_path_for(resource)
+    admin_homes_top_path
+  end
+  
+  #ログアウト後の遷移先
+  def after_sign_out_path_for(resource)
+    new_admin_session_path
+  end
+  
+  
+  
   # 退会しているかを判断するメソッド
   def customer_state
     ## [処理内容1]入力されたemailからアカウントを一件取得
