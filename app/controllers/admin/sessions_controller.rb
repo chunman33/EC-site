@@ -5,14 +5,14 @@ class Admin::SessionsController < Devise::SessionsController
   before_action :customer_state, only: [:create]
 
   # GET /resource/sign_in
-  def new
-    super
-  end
+  # def new
+  #   super
+  # end
 
   # POST /resource/sign_in
-  def create
-    super
-  end
+  # def create
+  #  super
+  # end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -24,7 +24,7 @@ class Admin::SessionsController < Devise::SessionsController
   #ログイン後の遷移先
   
   def after_sign_in_path_for(resource)
-    admin_homes_top_path
+    admin_path
   end
   
   #ログアウト後の遷移先

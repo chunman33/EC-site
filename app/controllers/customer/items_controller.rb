@@ -1,5 +1,9 @@
 class Customer::ItemsController < ApplicationController
-  def top
-    binding.irb
+  def index
+  
   end
+  
+  def show
+  end
+
 end
