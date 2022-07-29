@@ -38,11 +38,11 @@
             </ul>
           <% else %>
             <ul class="navbar-nav">
-              <%= link_to "LOGO", root_path %>
+              <%= link_to "LOGO", root_path, class: "navbar-brand btn btn-outline-secondary pl-5 pr-5" %>
             </ul>
             <ul class="navbar-nav ml-auto">
-              <li><%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-secondary mt-3 mr-4" %></li>
-              <li><%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-secondary mt-3 mr-4" %></li>
+              <li><%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-secondary mt-3 mr-5 mb-5" %></li>
+              <li><%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-secondary mt-3 mr-5" %></li>
               <li><%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-secondary mt-3 mr-4" %></li>
             </ul>
           <% end %>

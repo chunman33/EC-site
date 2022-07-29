@@ -29,8 +29,8 @@ Rails.application.routes.draw do
    resources :customers, only: [:edit, :update] do
      collection do
        get 'my_page', to: 'customers#show', as: :my_page
-       get 'unsubscribe'
-       patch 'withdraw'
+       get '/:id/unsubscribe', to: 'customers#unsubscribe', as: :unsubscribe
+       patch '/:id/withdraw', to: 'customers#withdraw', as: :withdraw
      end
    end
   end
