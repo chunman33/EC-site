@@ -26,9 +26,9 @@ Rails.application.routes.draw do
       end
    end
    
-   resources :customer, only: [:edit, :update], path: '/customers' do
+   resources :customers, only: [:edit, :update] do
      collection do
-       get 'my_page', to: 'customers#show', as: :customers_my_page
+       get 'my_page', to: 'customers#show', as: :my_page
        get 'unsubscribe'
        patch 'withdraw'
      end

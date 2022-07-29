@@ -1,1 +1,53 @@
+<div class="container">
+ <div class="row">
+  <div class="col-md-4">
+  <div class="form_check form_check_inline"> <!--form_check form_check_inlineで横並びにする-->
+   <strong>登録情報</strong>
+     <%= link_to "編集する", edit_customer_path(@customer), class: "btn btn-success ml-4 mb-3 mt-4" %><!--btn-successは緑ボタン-->
+  </div>
+      <table border="1", style="border-collapse: collapse" cellPadding="10">
+       <!--border="１"で表に二重の枠線を作り、border-collapseプロパティをcollapseに修正することで二重線を1つに。-->
+       <tr> 
+        <th bgcolor="#EEEEEE">氏名</th>
+         <td width="100"><%= @customer.last_name %>
+             <%= @customer.first_name %></td>
+       </tr>
+       <tr> 
+        <th bgcolor="#EEEEEE">カナ</th>
+        <td><%= @customer.last_name_kana %>
+            <%= @customer.first_name_kana %></td>
+       </tr>
+       <tr> 
+        <th bgcolor="#EEEEEE">郵便番号</th>
+        <td><%= @customer.postcode %></td>
+       </tr>
+       <tr> 
+        <th bgcolor="#EEEEEE">住所</th>
+        <td><%= @customer.address %></td>
+       </tr>
+       <tr> 
+        <th bgcolor="#EEEEEE">電話番号</th>
+        <td><%= @customer.phone_number %></td>
+       </tr>
+       <tr> 
+        <th bgcolor="#EEEEEE">メールアドレス</th>
+        <td><%= @customer.email %></td>
+       </tr>
+      
+      </table>
+
+<div class="form_check form_check_inline"><!--form_check form_check_inlineで要素を横並びにする-->
+ <strong>配送先</strong>
+   <%= link_to "一覧を見る", "#_path", class: "btn btn-primary ml-5 mb-3 mt-5" %>
+</div>
+
+
+<div class="form_check form_check_inline">
+ <strong>注文履歴</strong>
+  <%= link_to "一覧を見る", "#_path", class: "btn btn-primary ml-4" %>
+  </div>
+</div>
+</div>
+</div>
+
 

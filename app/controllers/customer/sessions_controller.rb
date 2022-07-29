@@ -21,7 +21,7 @@ class Customer::SessionsController < Devise::SessionsController
    protected
    
    def after_sign_in_path_for(resource)
-     customers_my_page_customer_index_path
+     my_page_customers_path
    end
 
   # If you have extra params to permit, append them to the sanitizer.

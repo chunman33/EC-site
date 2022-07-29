@@ -5,40 +5,41 @@
 
   <div class="field">
     <%= f.label :last_name, "(姓)" %></br>
-    <%= f.text_field :last_name, autofocus: true %>
+    <%= f.text_field :last_name, autofocus: true, placeholder: "山田" %>
   <div>
   <div class="field">
     <%= f.label :first_name, "(名)" %></br>
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name, placeholder: "太朗" %>
   <div>
   <div class="field">
     <%= f.label :last_name_kana, "(セイ)" %></br>
-    <%= f.text_field :last_name_kana %>
+    <%= f.text_field :last_name_kana, placeholder: "ヤマダ" %>
   <div>
   <div class="field">
     <%= f.label :first_name_kana, "(メイ)" %></br>
-    <%= f.text_field :first_name_kana %>
+    <%= f.text_field :first_name_kana, placeholder: "タロウ" %>
   <div>
     
     
   <div class="field">
     <%= f.label :email, "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %> 
+    <!--placeholderで入力フォーム内に初期値として表示される文字を作成-->
   </div>
     
   <div class="field">
     <%= f.label :postcode, "郵便番号(ハイフンなし)" %></br>
-    <%= f.text_field :postcode%>
+    <%= f.text_field :postcode, placeholder: "00000000"%>
   </div>
     
   <div class="field">
     <%= f.label :address, "住所" %><br>
-    <%= f.text_field :address %>
+    <%= f.text_field :address, placeholder: "東京都渋谷区代々木神南町0-0"%>
   <div>
     
   <div class="field">
     <%= f.label :phone_number, "電話番号(ハイフンなし)" %><br>
-    <%= f.text_field :phone_number %>
+    <%= f.text_field :phone_number, placeholder: "00000000000" %>
   <div>
 
   <div class="field">
