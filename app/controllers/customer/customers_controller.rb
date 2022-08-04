@@ -14,6 +14,7 @@ class Customer::CustomersController < ApplicationController
     if @customer.update(customer_params)
       redirect_to customers_my_page_path
     else
+      render :edit
     end
   end
   
@@ -31,6 +32,6 @@ class Customer::CustomersController < ApplicationController
   
   private
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :phone_number)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :email,:phone_number)
   end
 end

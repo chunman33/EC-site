@@ -9,4 +9,12 @@ class Customer < ApplicationRecord
     super && (is_unsubscribed == false)
   end
   
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :last_name_kana, presence: true
+  validates :first_name_kana, presence: true
+  validates :postcode, presence: true
+  validates :email, presence: true
+  validates :phone_number, presence: true
+  
 end
