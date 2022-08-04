@@ -1,5 +1,6 @@
 class Admin::CustomersController < ApplicationController
   def index
+    @customer = Customer.all
   end
 
   def show
@@ -10,4 +11,11 @@ class Admin::CustomersController < ApplicationController
 
   def update
   end
+  
+  protected
+  
+  def admin_params
+    
+  end
+  
 end

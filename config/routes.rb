@@ -25,15 +25,18 @@ Rails.application.routes.draw do
         get 'complete'
       end
    end
-   
-   resources :customers, only: [:edit, :update] do
-     collection do
-       get 'my_page', to: 'customers#show', as: :my_page
-       get '/:id/unsubscribe', to: 'customers#unsubscribe', as: :unsubscribe
-       patch '/:id/withdraw', to: 'customers#withdraw', as: :withdraw
-     end
+  
+  get 'customers/my_page', to: 'customers#show', as: :customers_my_page
+   namespace :customers do #15行目のscopeを利用して、コントローラー名だけ単数系で上書き
+       get 'unsubscribe'
+       patch 'withdraw'
+       get 'edit'
+       patch 'update'
    end
-  end
+   
+ end
+ 
+  
   
   
  

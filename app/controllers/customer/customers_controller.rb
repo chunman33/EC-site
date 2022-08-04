@@ -6,24 +6,24 @@ class Customer::CustomersController < ApplicationController
   end
   
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
   
   def update
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
     if @customer.update(customer_params)
-      redirect_to my_page_customers_path
+      redirect_to customers_my_page_path
     else
     end
   end
   
   def unsubscribe
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
   
   def withdraw
-   @customer = Customer.find(params[:id])
-   @customer.update(is_unsubscribed: false)
+   @customer = current_customer
+   @customer.update(is_unsubscribed: true)
    reset_session #ログアウトさせる
    redirect_to root_path
   end

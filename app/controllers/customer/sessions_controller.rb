@@ -25,7 +25,7 @@ class Customer::SessionsController < Devise::SessionsController
     ## ↑入力されたemailからアカウントを1件取得
     return if !@customer
     # ↑アカウントを取得できなかった場合、このメソッドを終了する
-    if @customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == true)
+    if @customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false)
     ## ↑取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別し、active_for_authentication?をオーバーライドして論理削除されているユーザーを弾く
     flash[:error] = "このアカウントは退会済みです。"
     redirect_to new_customer_registration_path
@@ -35,7 +35,7 @@ class Customer::SessionsController < Devise::SessionsController
  
    
    def after_sign_in_path_for(resource)
-     my_page_customers_path
+     customers_my_page_path
    end
 
   # If you have extra params to permit, append them to the sanitizer.

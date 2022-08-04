@@ -1,2 +1,33 @@
-<h1>Admin::Customers#index</h1>
-<p>Find me in app/views/admin/customers/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col text-center">
+      <table class="table">
+        <thead>
+          <tr>
+           <th>会員ID</th>
+           <th>氏名</th>
+           <th>メールアドレス</th>
+           <th>ステータス</th>
+           <th colspan = "3"></th>
+          </tr>
+        </thead>
+        <tbody>
+            <% @customer.each do |customer| %>
+          <tr>
+           <td><%= customer.id %></td>
+           <td><%= customer.last_name %><%= customer.first_name %></td>
+           <td><%= customer.email %></td>
+           <% if customer.is_unsubscribed == false %>  <!--falseはアカウント有り-->
+           <td style ="color:#00FF00">有効</td>
+                <% else %>
+           <td style ="color:#C0C0C0">退会済み</td>
+                <% end %>
+           </td>
+           
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

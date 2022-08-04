@@ -15,23 +15,24 @@
       <!--nevbarでナビゲーションバーの表示を宣言, expandでサイズ指定, 次で背景色の種類と色を指定-->
           <% if admin_signed_in? %>
           
-            <%= link_to "LOGO", admin_path, class: "btn btn-outline-secondary navbar-brand" %>
-            <div class="form mr-auto"><!--mr-autoで右寄せ-->
-            <%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-secondary mt-3 mr-4" %>
+          <ul class="navbar-nav">
+            <%= link_to "LOGO", admin_path, class: "navbar-brand btn btn-outline-secondary pl-5 pr-5" %>
+          </ul>  
+          <ul class="navbar-nav ml-auto"><!--mr-autoで右寄せ-->
+              <li><%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-secondary mt-3 mr-4 mb-5" %></li>
             <!--btn-outlineで枠線を残してボタンの背景色を透過-->
-            <%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-secondary mt-3 mr-4" %>
-            <%= link_to "注文履歴一覧", orders_path, class: "btn btn-outline-secondary mt-3 mr-4" %>
-            <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-secondary mt-3 mr-4" %>
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary mt-3 mr-4" %>  
-            </div>
-            
+              <li><%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-secondary mt-3 mr-4" %></li>
+              <li><%= link_to "注文履歴一覧", orders_path, class: "btn btn-outline-secondary mt-3 mr-4" %></li>
+              <li><%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-secondary mt-3 mr-4" %></li>
+              <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary mt-3 mr-4" %></li>
+          </ul>  
           <% elsif customer_signed_in? %>
           
             <ul class="navbar-nav">
               <%= link_to "LOGO", root_path, class: "navbar-brand btn btn-outline-secondary pl-5 pr-5" %>
             </ul>
             <ul class="navbar-nav ml-auto">
-              <li><%= link_to "マイページ", my_page_customers_path, class: "btn btn-outline-secondary mt-3 mr-5 mb-5" %></li>
+              <li><%= link_to "マイページ", customers_my_page_path, class: "btn btn-outline-secondary mt-3 mr-5 mb-5" %></li>
               <li><%= link_to "商品一覧", items_path, class: "btn btn-outline-secondary mt-3 mr-5" %></li>
               <li><%= link_to "カート", cart_items_path, class: "btn btn-outline-secondary mt-3 mr-5" %></li>
               <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-secondary mt-3 mr-4" %></li>

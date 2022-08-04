@@ -1,42 +1,45 @@
 <div class="container">
  <div class="row">
-  <div class="col-md-4">
+  <div class=col-md-10 >
+　　<h4>会員情報編集</h4>
 
-<h1>会員情報編集</h1>
-
- <%= form_with model: @customer do |f| %>
- 
- <div class="row">
- <div class="form_check form_check_inline">
-  <div class="col-md-4 offset-md-2">
- <%= f.label :氏名 %>
- <%= f.text_field :last_name %>
+ <%= form_with model: current_customer, url: customers_update_path do |f| %>
+ <div>
+ <%= f.label :氏名, class: "col-md-3" %>
+ <%= f.text_field :last_name, class: "mr-5"%>
  <%= f.text_field :first_name %>
  </div>
- </div>
- </div>
- <br>
- <%= f.label :フリガナ, class: "col-md-4" %>
- <%= f.text_field :last_name_kana %>
+ <div>
+ <%= f.label :フリガナ, class: "col-md-3" %>
+ <%= f.text_field :last_name_kana, class: "mr-5" %>
  <%= f.text_field :first_name_kana %>
- <br>
- <%= f.label :郵便番号, class: "col-md-4" %>
+ </div>
+ <div>
+ <%= f.label :郵便番号, class: "col-md-3" %>
  <%= f.text_field :postcode %>
- <br>
- <%= f.label :住所, class: "col-md-4" %>
+ </div>
+ <div>
+ <%= f.label :住所, class: "col-md-3" %>
  <%= f.text_field :address %>
- <br>
- <%= f.label :電話番号, class: "col-md-4" %>
+ </div>
+ <div>
+ <%= f.label :電話番号, class: "col-md-3" %>
  <%= f.text_field :phone_number %>
- <br>
- <%= f.label :メールアドレス, class: "col-md-6" %>
+ </div>
+ <div>
+ <%= f.label :メールアドレス, class: "col-md-3" %>
  <%= f.text_field :email %>
- <br>
+ </div>
+ 
+ <div class="row">
+ <div class="col-md-8 offset-md-3">
  <%= f.submit "編集内容を保存", class: "btn btn-success mt-3"%>
  
+ <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-danger mt-3 ml-5" %>
+ </div>
  <% end %>
+ </div>
  
- <%= link_to "退会する", unsubscribe_customers_path(@customer), class: "btn btn-danger mt-3" %>
  
  </div>
 </div>
