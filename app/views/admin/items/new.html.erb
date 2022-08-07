@@ -1,2 +1,42 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+
+<div class ="container">
+  <div class= "row">
+    <div class="col">
+      <%= form_with model: Item.new , url: admin_items_path do |f| %>
+      
+      <div>
+       <%= f.label :商品画像 %>
+       <%= f.file_field :image %>
+      </div>
+      <div>
+       <%= f.label :商品名 %>
+       <%= f.text_field :name %>
+      </div>
+      <div>
+       <%= f.label :商品説明 %>
+       <%= f.text_field :description %>
+      </div> 
+      <div>
+       <%= f.label :ジャンル %>
+       <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "選択してください"} %>
+      </div> 
+      <div>
+        <%= f.label :税抜価格 %>
+        <%= f.text_field :excluding_tax_price %> 
+      </div>
+      <div>
+        <h6>販売ステータス</h6>
+        <%= f.radio_button :sale_status, "true" %>
+        <%= f.label :販売中 %>
+        <%= f.radio_button :sale_status, "false"%>
+        <%= f.label :販売停止中 %>
+      </div>
+      
+      <%= f.submit "新規登録", class: "btn btn-success" %>
+       
+      
+      <!--選択ボックスをモデルの情報を元に生成する⇨Genreモデルの各レコードのnmaeカラムの値でセレクトボックスを作成-->
+      <% end %>
+    </div>
+  </div>
+</div>

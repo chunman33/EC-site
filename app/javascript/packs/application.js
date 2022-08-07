@@ -13,6 +13,9 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 
+// font_awesome導入
+import '@fortawesome/fontawesome-free/js/all'
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
