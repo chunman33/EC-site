@@ -1,42 +1,55 @@
 
 <div class ="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h4>商品新規登録</h4>
+    </div>
+  </div>
+  
   <div class= "row">
-    <div class="col">
-      <%= form_with model: Item.new , url: admin_items_path do |f| %>
+    <div class="col-md-6 offset-md-3 mx-auto">
+    <table>
+    
+      <%= form_with model: Item.new, url: admin_items_path do |f| %>
       
-      <div>
-       <%= f.label :商品画像 %>
-       <%= f.file_field :image %>
-      </div>
-      <div>
-       <%= f.label :商品名 %>
-       <%= f.text_field :name %>
-      </div>
-      <div>
-       <%= f.label :商品説明 %>
-       <%= f.text_field :description %>
-      </div> 
-      <div>
-       <%= f.label :ジャンル %>
-       <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "選択してください"} %>
-      </div> 
-      <div>
-        <%= f.label :税抜価格 %>
-        <%= f.text_field :excluding_tax_price %> 
-      </div>
-      <div>
-        <h6>販売ステータス</h6>
-        <%= f.radio_button :sale_status, "true" %>
+      <tr>
+       <td><%= f.label :商品画像 %></td>
+       <td><%= f.file_field :image %></td>
+      <tr>
+        <tr>
+       <td>
+       <%= f.label :商品名 %></td>
+       <td><%= f.text_field :name, placeholder: "商品名", size:"30" %> </td>
+       <!--text_fieldの時のサイズ指定はwidthのみ、heightも掛けたい時はtext_area-->
+      </tr>
+      <tr>
+       <td><%= f.label :商品説明 %></td>
+       <td><%= f.text_area :description, placeholder: "ここに説明文を記述します。", size: "30x10" %></td>
+      </tr> 
+      <tr>
+       <td><%= f.label :ジャンル %></td>
+       <td><%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "選択してください"} %></td>
+      </tr> 
+      <tr>
+        <td><%= f.label :税抜価格 %></td>
+        <td><%= f.text_field :excluding_tax_price, placeholder: "1000", size:"30x30" %> 円</td>
+      </tr>
+      <tr>
+        <td>販売ステータス</td>
+        <td><%= f.radio_button :sale_status, "true" %>
         <%= f.label :販売中 %>
         <%= f.radio_button :sale_status, "false"%>
-        <%= f.label :販売停止中 %>
-      </div>
-      
+        <%= f.label :販売停止中 %></td>
+      </tr>
+      <td align="center">
       <%= f.submit "新規登録", class: "btn btn-success" %>
-       
+       </td>
       
       <!--選択ボックスをモデルの情報を元に生成する⇨Genreモデルの各レコードのnmaeカラムの値でセレクトボックスを作成-->
       <% end %>
+      
+      
+       </table>
     </div>
   </div>
 </div>

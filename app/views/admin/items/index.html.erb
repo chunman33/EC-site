@@ -7,7 +7,7 @@
     </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row text-center">
     <div class="col">
       <table class="table">
         <thead>
@@ -24,10 +24,10 @@
           <td><%= item.name %></td>
           <td><%= item.excluding_tax_price %></td>
           <td><%= item.genre.name %></td>
-          <% if item.sale_status == false %>
-              <td>有効</td>
+          <% if item.sale_status == true %>
+              <td style="color:#00FF00">販売中</td>
               <% else %>
-              <td>退会済み</td>
+              <td style="color:#C0C0C0">販売停止中</td>
               <% end %>
           <% end %>
           </tr>

@@ -1,14 +1,38 @@
 <div class="container">
-  <div class="row">
-    <div clss="col">
-     <% @items.each do |items| %>
-     
-      <%= image_tag items.image %>
-      <%= items.name %>
-      <%= items.description %>
-     
-     <% end %>
-      
+  <div class="row mt-5">
+    <div class="col-3">
+    <table border="1", rules="groups" cellPadding="5"><!--rules="groups"でグループの間(theadやtbody,tfoot)の罫線のみを表示する-->
+      <colgroup>
+        <col style="width: 200px;">
+      </colgroup> 
+        <thead>
+            <th style="text-align: center;">ジャンル検索</th><!--中央寄せ-->
+        </thead>
+         <tbody>
+          <% @genres.each do |genre| %>
+            <tr><td height="50px"><%= genre.name %></td></tr>
+          <% end %>
+        </tbody>
+    </table>
+    
     </div>
-  </div>
+  
+    <div class="col-9">
+      
+    <h2>商品一覧</h2><h6>(全<%= @items.count %>件)</h6>
+
+    
+    <div class="w-100 d-flex flex-wrap">
+   <% @items.each do |item| %> 
+    <div class="w-20 mr-2 mb-2">
+        
+     <div class="card-image-top"><%= image_tag item.get_image(170, 170) %></div>
+     <h7 class="card-title"><%= item.name %></h7>
+     <p class="card-text">¥<%= item.excluding_tax_price.to_s(:delimited) %></p>
+    </div>
+   
+   <% end %>
+    </div>
+   </div>
+  </div>  
 </div>
