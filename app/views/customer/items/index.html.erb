@@ -23,7 +23,9 @@
 
     
     <div class="w-100 d-flex flex-wrap">
+ 
    <% @items.each do |item| %> 
+   <% if item.sale_status? == true %>
     <div class="w-20 mr-2 mb-2">
         
      <div class="card-image-top"><%= image_tag item.get_image(170, 170) %></div>
@@ -32,6 +34,7 @@
     </div>
    
    <% end %>
+  <% end %>
     </div>
    </div>
   </div>  

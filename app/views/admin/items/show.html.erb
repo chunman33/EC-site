@@ -12,16 +12,17 @@
       <table style="width: 100%; height: 100%;"><!--インラインでCSSを指定-->
         <tbody>
           <tr><td>商品名</td><td class="date"><%= @item.name%></td></tr>
+          <!--dateクラスにCSSでfont-sizeを指定して文字を拡大-->
           <tr><td>商品説明</td><td class="date"><%= @item.description%></td></tr>
           <tr><td>ジャンル</td><td class="date"><%= @item.genre.name%></td></tr>
           <tr><td>税込価格(税抜価格)</td>
           <td class="date"><%= @item.add_tax_excluding_tax_price.to_s(:delimited) %><!--.to_s(:delimited)は３桁ごとにカンマ区切りで表示してくれるメソッド-->
         (<%= @item.excluding_tax_price.to_s(:delimited) %>)円 </td></tr>
           <tr><td>販売ステータス</td>
-            <% if @item.sale_status = true %>
-               <td class="date" style ="color:#00FF00">販売中</td>
-            <% else %>
-              <td class="date" style ="color:#C0C0C0">販売停止中</td>
+          <% if @item.sale_status? == false %>
+            <td class="date" style ="color:#C0C0C0">販売停止中</td>
+              <% else %>
+              <td class="date" style ="color:#00FF00">販売中</td>
             <% end %></tr>
             </tr>
         </tbody>
