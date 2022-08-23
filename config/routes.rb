@@ -16,7 +16,7 @@ Rails.application.routes.draw do
    resources :items, only: [:index, :show]
    resources :cart_items, only: [:index, :create, :update, :destroy] do 
         #↓resourcesで指定されている名前を任意のURLやアクション名に変更したい時(1つだけver)
-        delete 'cart_item/destroy_all'
+        delete 'cart_items/destroy_all'
     end
     
    resources :orders, only: [:new, :index, :create, :show] do

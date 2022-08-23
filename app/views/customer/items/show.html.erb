@@ -1,0 +1,34 @@
+<div class ="container">
+  <div class="row mt-5">
+    <div class="col-md-3">
+      <%= render 'genre', genres: @genres %>
+    </div>
+
+    <div class ="col-md-4">
+      <%= image_tag @item.get_image(200, 200) %>
+    </div>
+    
+    <div class ="col-md-5">
+      <table style="width: 100%; height: 100%; ">
+        <tr><th><span><%= @item.name %></span></th></tr>
+        <tr><td><%= @item.description %></td></tr>
+        <tr><td><%= @item.add_tax_price.to_s(:delimited) %></td></tr>
+        <tr><td>
+        <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+        <%= f.hidden_field :item_id, :value => @item.id %><!--item_idというキー(外部キーのカラム)を渡して、@itemのidを取得-->
+        <%= f.select :amount,*[1..10]%><!--amountカラムに１から10までの数字を格納するセレクトボックスを作成(表示する選択肢も同じ数字のためループで作成)-->
+        
+        <td><%= f.submit "カートに入れる" ,class: "btn btn-success" %></td>
+        
+        <% end %>
+        
+        </td>
+        </tr>
+        
+        
+      </table>
+    </div>
+    
+    
+  </div>
+</div>
