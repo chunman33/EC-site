@@ -25,6 +25,8 @@ Rails.application.routes.draw do
         get 'complete'
       end
    end
+   
+   resources :addresses, except: [:new, :show]
   
   get 'customers/my_page', to: 'customers#show', as: :customers_my_page
    namespace :customers do #15行目のscopeを利用して、コントローラー名だけ単数系で上書き
@@ -33,6 +35,8 @@ Rails.application.routes.draw do
        get 'edit'
        patch 'update'
    end
+   
+   
    
  end
  
