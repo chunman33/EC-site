@@ -5,7 +5,8 @@ class Customer::CartItemsController < ApplicationController
   end
   
   def create
-    @cart_item = current_customer.cart_items.new(cart_item_params)
+    @cart_item = CartItem.new(cart_item_params)
+    @cart_item.customer_id = current_customer
     if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present? #current_customerのcart_itemと紐づくitem_idがあるかどうかを判別
     @cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]) #current_customerのcart_itemからitem_idを持ってきて変数に格納
     @cart_item.amount += params[:cart_item][:item_id].to_i  #cart_itemモデルのitem_idを取得し、そこに紐づくamountカラムに数値を追加
@@ -15,6 +16,7 @@ class Customer::CartItemsController < ApplicationController
      redirect_to cart_items_path
     else
        @cart_items = CartItem.all
+       @total = 0
       render :index
     end
   end

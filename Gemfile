@@ -61,3 +61,6 @@ gem 'pry-byebug'
 
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
+
+#enum導入
+gem "enum_help"

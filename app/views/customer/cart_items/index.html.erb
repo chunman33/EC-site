@@ -31,12 +31,13 @@
         <%= f.hidden_field :item_id, :value => cart_item.item.id %><!--itemsのshowのように@itemにidを入れる形ではなく、cart_itemモデルからitemモデルに飛んでidを渡す-->
         <%= f.select :amount, *[1..10] %>
         <%= f.submit "変更", class: "btn btn-success"%>
-      <% end %>
+      
     </td>
     <td><%= cart_item.total_price.to_s(:delimited) %></td> <!--cart_itemモデルの小計を求めるメソッドを呼び出す-->
     <% @total += cart_item.total_price %><!--カート内の全商品を表示-->
     <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger"%></td>
   </tbody>
+   <% end %>
   <% end %>
 </table>
     
