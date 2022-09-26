@@ -17,6 +17,7 @@ Admin.create!(
 Genre.create(name: "ケーキ")
 Genre.create(name: "プリン")
 
+# まとめて作成
 Genres = Genre.create!([
     {name: "焼き菓子"}, 
     {name: "チョコ"},
@@ -37,4 +38,5 @@ Genres = Genre.create!([
 end
 
 Item.create!(name: "販売停止テスト", description: "販売停止の挙動をテストします。", sale_status: "false", genre_id: Genre.find(2).id, excluding_tax_price: 1000)
+
 

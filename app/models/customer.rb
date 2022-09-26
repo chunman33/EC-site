@@ -5,6 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :cart_items
+  has_many :orders
   
   # is_unsubscribedがfalseならtrueを返すようにしている
   def active_for_authentication?

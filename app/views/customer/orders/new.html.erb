@@ -7,10 +7,10 @@
   <div class="row">
     <div class="col">
       
-     <%= form_with model: @order do |f| %>
+     <%= form_with model: @order, url: confirm_orders_path do |f| %>
     
       <h5><strong>支払方法</strong></h5>
-      <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+      <%= f.radio_button :payment_method, Order.payment_methods.key(0) %><!--銀行振り込みとクレカ決済でプロパティ名が同じpayment_methodになっているため、どちらかしか選択できないラジオボタンとなる。-->
       <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
       <br>
       
@@ -19,16 +19,20 @@
       
       <h5><strong>お届け先</strong></h5>
       
-      
-      <%= f.radio_button :address, :address_display %>
-      <%= f.label :address, 'ご自身の住所' %>
-      <%= %>
+      <!--ログインユーザーの住所を選択する場合-->
+      <%= f.radio_button :address, 1 %>
+      <%= f.label :address, 'ご自身の住所' %><br>
+      <%= "〒" + current_customer.postcode %>
+      <%= current_customer.address %><br>
+      <%= current_customer.last_name + current_customer.first_name %>
       <br>
-      <%= f.radio_button :address, :address_display %>
+      <!--セレクトボックス(登録済み住所)から選択する場合-->
+      <%= f.radio_button :address, 2 %>
       <%= f.label :address, '登録済住所から選択' %><br>
-      <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display)%> <!--(モデル, :フォームで送る値(メソッド), :セレクトボックスに表示する値(メソッド)-->
+      <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address)%> <!--(モデル, :パラメータで送られる値, :ブラウザの画面に表示される値-->
       <br>
-      <%= f.radio_button :address, :address_display%>
+      <!--新しい住所を追加する場合-->
+      <%= f.radio_button :address, 3 %>
       <%= f.label :address, '新しいお届け先'%>
       <div>
       <%= f.label :郵便番号 %>

@@ -4,3 +4,17 @@ ja: # 日本語の設定
    payment_method: #カラム名
     credit_card: "クレジットカード"  # [enumで番号と紐付けた要素]
     transfer: "銀行振込" #0と1に紐づいていたcredit_cardとtransferが日本語化される
+    
+    order_status: #カラム名
+     wait_payment: '入金待ち'
+     confirm_payment: '入金確認'
+     making: '製作中'
+     preparing_ship: '発送準備中'
+     finish_prepare: '発送済み'
+   
+  order_detail: #モデル名
+   production_status:
+    impossible_manufacture: '着手不可'
+    waiting_manufacture: '製作待ち'
+    manufacturing: '製作中'
+    finish: '製作完了'

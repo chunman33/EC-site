@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   has_one_attached :image #itemモデルにimageカラムを追加したかのように扱ってくれる
   belongs_to :genre
   has_many :cart_items
+  has_many :order_details
   
   def add_tax_price
     (self.excluding_tax_price * 1.10).round # .roundで消費税計算時に表示される小数点以下を切り上げる
