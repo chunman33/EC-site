@@ -9,7 +9,11 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items, except: [:destroy]
+    resources :orders, only: [:show, :update]
+    
   end
+  
+ 
  
   
   scope module: :customer do #controllerだけにcustomerを追加

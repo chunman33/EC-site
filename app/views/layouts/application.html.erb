@@ -22,7 +22,7 @@
               <li><%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-secondary mt-3 mr-4 mb-5" %></li>
             <!--btn-outlineで枠線を残してボタンの背景色を透過-->
               <li><%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-secondary mt-3 mr-4" %></li>
-              <li><%= link_to "注文履歴一覧", orders_path, class: "btn btn-outline-secondary mt-3 mr-4" %></li>
+              <li><%= link_to "注文履歴一覧", admin_path, class: "btn btn-outline-secondary mt-3 mr-4" %></li>
               <li><%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-secondary mt-3 mr-4" %></li>
               <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary mt-3 mr-4" %></li>
           </ul>  
