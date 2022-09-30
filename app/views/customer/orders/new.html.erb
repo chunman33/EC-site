@@ -1,7 +1,8 @@
 <div class= "container">
-  <div class="row">
-   
+  <div class="row mb-3">
+    <div class="col-8 offset-1">
       <h5>注文情報入力画面</h5>
+    </div>
   </div>
   
   <div class="row">
@@ -10,8 +11,8 @@
      <%= form_with model: @order, url: confirm_orders_path do |f| %>
     
       <h5><strong>支払方法</strong></h5>
-      <%= f.radio_button :payment_method, Order.payment_methods.key(0) %><!--銀行振り込みとクレカ決済でプロパティ名が同じpayment_methodになっているため、どちらかしか選択できないラジオボタンとなる。-->
-      <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+      <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: "checked", class:"indent-1" %><!--銀行振り込みとクレカ決済でプロパティ名が同じpayment_methodになっているため、どちらかしか選択できないラジオボタンとなる。-->
+      <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %><!--checked:予めbutton選択される-->
       <br>
       
       <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
@@ -20,7 +21,7 @@
       <h5><strong>お届け先</strong></h5>
       
       <!--ログインユーザーの住所を選択する場合-->
-      <%= f.radio_button :select_address, 0 %>
+      <%= f.radio_button :select_address, 0, checked: "checked" %><!--checked:予めbutton選択される-->
       <%= f.label :address, 'ご自身の住所' %><br>
       <%= "〒" + current_customer.postcode %>
       <%= current_customer.address %><br>
@@ -34,22 +35,28 @@
       <!--新しい住所を追加する場合-->
       <%= f.radio_button :select_address, 2 %>
       <%= f.label :address, '新しいお届け先'%>
-      <div>
-      <%= f.label :post_code, "郵便番号" %>
-      <%= f.text_field :post_code %>
-      </div>
-      <div>
-      <%= f.label :address, "住所"%>
-      <%= f.text_field :address %>
-      </div>
-      <div>
-      <%= f.label :name, "宛名" %>
-      <%= f.text_field :name %>
-      </div>
       
+    <table>
+      <tr>
+       <td class="col-3"><%= f.label :post_code, "郵便番号(ハイフンなし)" %></td>
+       <td class="col-9"><%= f.text_field :post_code, placeholder: "0000000" %></td>
+      </tr>
+     <tr>
+       <td class="col-3"><%= f.label :address, "住所"%></td>
+       <td class="col-9"><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", size:65  %></td>
+     </tr>
+     <tr>
+       <td class="col-3"><%= f.label :name, "宛名" %></td>
+       <td class="col-9"><%= f.text_field :name, placeholder: "令和道子" %></td>
+     </tr>
+     </table>  
+    
+    <div class="row justify-content-center py-5">
       <%= f.hidden_field :postage, :value => @order.postage %><!--送料をpostageカラムに保存-->
       <%= f.submit "確認画面へ進む", class: "btn btn-primary"%>
       <% end %>
+   </div>
+     
       
     </div>
   </div>

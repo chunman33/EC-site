@@ -12,18 +12,27 @@ class Customer::OrdersController < ApplicationController
       @order.name = current_customer.last_name + current_customer.first_name
       @order.post_code = current_customer.postcode
       @order.address = current_customer.address
+      @order.postage = 800
+    @order.payment_status = 0
+    @order.payment_price = @order.postage + @total.to_i
     # ２つ目の処理
     elsif params[:order][:select_address] == "1"
       @address = Address.find(params[:order][:address_id])
       @order.post_code = @address.post_code
       @order.address = @address.address
       @order.name = @address.name
+      @order.postage = 800
+    @order.payment_status = 0
+    @order.payment_price = @order.postage + @total.to_i
       
     # ３つ目の処理
     elsif params[:order][:select_address] == "2"
       @order.post_code = @order.post_code # ココ以下は書かなくても良い
       @order.address = @order.address
       @order.name = @order.name
+      @order.postage = 800
+    @order.payment_status = 0
+    @order.payment_price = @order.postage + @total.to_i
     #万が一失敗した場合の処理
     else
       redirect_to cart_items_path
@@ -48,6 +57,8 @@ class Customer::OrdersController < ApplicationController
       @order_details.purchase_price = cart_item.item.excluding_tax_price
       @order_details.quantity = cart_item.amount
       @order_details.save
+      @order_details.production_status = 0
+    binding.pry
     end
     redirect_to complete_orders_path
     @cart_items.destroy_all
