@@ -11,7 +11,7 @@
      <%= form_with model: @order, url: confirm_orders_path do |f| %>
     
       <h5><strong>支払方法</strong></h5>
-      <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: "checked", class:"indent-1" %><!--銀行振り込みとクレカ決済でプロパティ名が同じpayment_methodになっているため、どちらかしか選択できないラジオボタンとなる。-->
+      <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: "checked" %><!--銀行振り込みとクレカ決済でプロパティ名が同じpayment_methodになっているため、どちらかしか選択できないラジオボタンとなる。-->
       <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %><!--checked:予めbutton選択される-->
       <br>
       

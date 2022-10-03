@@ -8,5 +8,5 @@ class OrderDetail < ApplicationRecord
   def total_price
     item.add_tax_price * quantity # itemモデルのadd_tax_priceメソッドを呼び出している。
   end
-
+  
 end
