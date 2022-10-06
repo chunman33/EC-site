@@ -1,8 +1,15 @@
 <div class="container">
+  <% flash.each do |alert, value| %>
+  <div class="alert alert-danger"<%= alert %>>
+   <%= value %>
+   </div>
+   <% end %>
   <div class="row justify-content-between  mt-3 mb-2"><!--"row justify-content-between"で両端に配置-->
+  
    <div class="col-4 mt-3 mb-3">
      <h5>ショッピングカート</h5>
    </div>
+   
    <div class="col-2">
      <%= link_to "カートを空にする", cart_item_cart_items_destroy_all_path(@cart_items), method: :delete,class: "btn btn-danger", data: {confirm: "本当に空にしますか"} %>
    </div>

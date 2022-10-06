@@ -16,7 +16,7 @@
         </thead>
         <% @orders.each do |order| %>
         <tbody>
-          <td><%= order.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+          <td><%= link_to order.created_at.strftime("%Y/%m/%d %H:%M:%S"), admin_order_path(order) %></td>
           <td><%= order.name %></td>
           <td><%= order.get_total_quantity %></td>
           <td><%= order.payment_status_i18n %></td>

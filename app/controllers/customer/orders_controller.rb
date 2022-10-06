@@ -1,4 +1,7 @@
 class Customer::OrdersController < ApplicationController
+  
+  before_action :cart_item_check, {only: [:new]}
+  
   def new
     @order = Order.new
     @postage = 800
@@ -38,6 +41,7 @@ class Customer::OrdersController < ApplicationController
     
   end
 
+
   def complete
   end
 
@@ -73,6 +77,14 @@ class Customer::OrdersController < ApplicationController
   
   def order_params
     params.require(:order).permit(:address,:name, :payment_method, :post_code, :payment_status, :payment_price, :postage, :customer_id)
+  end
+  
+  
+  def cart_item_check
+    @cart_items = current_customer.cart_items.all
+    if @cart_items == []
+     redirect_to cart_items_path, flash: {alert:  "カートに商品がありません。"}
+    end
   end
   
  
