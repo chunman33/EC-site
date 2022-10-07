@@ -12,9 +12,8 @@
 
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <!--nevbarでナビゲーションバーの表示を宣言, expandでサイズ指定, 次で背景色の種類と色を指定-->
+      <!--navbarでナビゲーションバーの表示を宣言, expandでサイズ指定, 次で背景色の種類と色を指定-->
           <% if admin_signed_in? %>
-          
           <ul class="navbar-nav">
             <%= link_to "LOGO", admin_path, class: "navbar-brand btn btn-outline-secondary pl-5 pr-5" %>
           </ul>  
@@ -25,7 +24,12 @@
               <li><%= link_to "注文履歴一覧", admin_path, class: "btn btn-outline-secondary mt-3 mr-4" %></li>
               <li><%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-secondary mt-3 mr-4" %></li>
               <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary mt-3 mr-4" %></li>
-          </ul>  
+          </ul>
+          
+            <%= form_with url: admin_items_path, method: :get, local: true do |f| %>
+             <%= f.text_field :search %>
+             <%= f.submit 'Search', name: nil %>
+            <% end %>
           <% elsif customer_signed_in? %>
           
             <ul class="navbar-nav">

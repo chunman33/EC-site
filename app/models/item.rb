@@ -10,6 +10,8 @@ class Item < ApplicationRecord
   end
   
   
+  
+  
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('./app/assets/images/no_image.jpeg')
