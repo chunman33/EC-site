@@ -7,7 +7,10 @@
         </thead>
          <tbody>
           <% genres.each do |genre| %>
-            <tr><td height="50px"><%= genre.name %></td></tr>
+            <tr><td height="50px">
+              <!--ジャンル検索機能の実装-->
+              <%= link_to genre.name, items_path(genre_id: genre.id) %></td></tr>
+              <!--一覧画面遷移時に引数としてgenre_idパラメータを付与し、その中にgenreモデルのidを入れる。-->
           <% end %>
         </tbody>
-    </table>
+ </table>
