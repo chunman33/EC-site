@@ -1,3 +1,3 @@
 class Genre < ApplicationRecord
-  has_many :Item
+  has_many :items
 end

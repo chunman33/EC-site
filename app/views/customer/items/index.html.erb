@@ -6,8 +6,8 @@
   
     <div class="col-9">
       
-    <h2>商品一覧</h2><h6>(全<%= @items.count %>件)</h6>
-
+    <h2>商品一覧</h2><h6>(全<%= @items.count{ |item| item.sale_status? == true } %>件)</h6>
+    <!--countメソッドには引数を渡すことができる(ブロックでも可)ため、ブロックにしてsale_statusがtrueの時のみカウント-->
     
     <div class="w-100 d-flex flex-wrap">
  
