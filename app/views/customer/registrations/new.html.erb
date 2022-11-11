@@ -1,67 +1,76 @@
-<h2>新規会員登録</h2>
+<div class="container">
+ <div class="row">
+   <div class="col-5">
+    <h5 class="mt-5 mb-5">新規会員登録</h5>
+  </div>
+ </div>
 
 <%= form_with model: @customer, url: customer_registration_path do |f| %>
   <%= render "customer/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :last_name, "(姓)" %></br>
-    <%= f.text_field :last_name, autofocus: true, placeholder: "山田" %>
-  <div>
-  <div class="field">
-    <%= f.label :first_name, "(名)" %></br>
-    <%= f.text_field :first_name, placeholder: "太朗" %>
-  <div>
-  <div class="field">
-    <%= f.label :last_name_kana, "(セイ)" %></br>
-    <%= f.text_field :last_name_kana, placeholder: "ヤマダ" %>
-  <div>
-  <div class="field">
-    <%= f.label :first_name_kana, "(メイ)" %></br>
-    <%= f.text_field :first_name_kana, placeholder: "タロウ" %>
-  <div>
+  <div class="row">
+      <p class="col-3">名前
+      <%= f.label :last_name, "(姓)", class: "offset-8"%></p>
+      <%= f.text_field :last_name, autofocus: true, placeholder: "山田", class: "form-control col-3"  %>
+   
+      <%= f.label :first_name, "(名)", class: "offset-1 mr-4" %>
+      <%= f.text_field :first_name, placeholder: "太朗", class: "form-control col-3"  %>
+  </div>
+  <div class="row">
+   <p class="col-3">フリガナ
+    <%= f.label :last_name_kana, "(セイ)", class: "offset-6" %></p>
+    <%= f.text_field :last_name_kana, placeholder: "ヤマダ", class: "form-control col-3" %>
     
-    
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %> 
+    <%= f.label :first_name_kana, "(メイ)", class: "offset-1 mr-2" %>
+    <%= f.text_field :first_name_kana, placeholder: "タロウ", class: "form-control col-3" %>
+  </div>
+   
+  <div class="row">
+ 
+    <%= f.label :email, "メールアドレス", class: "col-3" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "form-control col-3" %> 
     <!--placeholderで入力フォーム内に初期値として表示される文字を作成-->
+ </div>
+ <div class="row mt-2">
+    <%= f.label :postcode, "郵便番号(ハイフンなし)", class: "col-3" %>
+    <%= f.text_field :postcode, placeholder: "1234567", class: "form-control col-3"%>
   </div>
     
-  <div class="field">
-    <%= f.label :postcode, "郵便番号(ハイフンなし)" %></br>
-    <%= f.text_field :postcode, placeholder: "00000000"%>
+   <div class="row mt-2">
+    <%= f.label :address, "住所", class: "col-3" %>
+    <%= f.text_field :address, placeholder: "東京都渋谷区代々木神南町0-0", class: "form-control col-7"%>
   </div>
-    
-  <div class="field">
-    <%= f.label :address, "住所" %><br>
-    <%= f.text_field :address, placeholder: "東京都渋谷区代々木神南町0-0"%>
-  <div>
-    
-  <div class="field">
-    <%= f.label :phone_number, "電話番号(ハイフンなし)" %><br>
-    <%= f.text_field :phone_number, placeholder: "00000000000" %>
-  <div>
-
-  <div class="field">
-    <%= f.label :password, "パスワード(6文字以上)" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  
+  <div class="row mt-2">
+    <%= f.label :phone_number, "電話番号(ハイフンなし)", class: "col-3" %>
+    <%= f.text_field :phone_number, placeholder: "08012345678", class: "form-control col-3 mb-2" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "パスワード(確認用)" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+   <div class="row mt-2">
+    <div class="col-3">
+    <%= f.label :password, "パスワード" %>
+    <% if @minimum_password_length %>(<%= @minimum_password_length %>文字以上)
+    <% end %>
+    </div>
+    <%= f.password_field :password, autocomplete: "new-password",class: "form-control col-3 mb-2" %>
+  </div>
+  
+ <div class="row mt-2">
+    <%= f.label :password_confirmation, "パスワード(確認用)", class: "col-3" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control col-3 mb-2" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "新規会員登録" %>
+  <div class="row">
+    <div class="col text-center">
+    <%= f.submit "新規会員登録", class: "btn btn-success mt-3 mb-5" %>
+    </div>
   </div>
 <% end %>
 
-<h2>既に登録済みの方</h2>
+<h5>既に登録済みの方</h5>
 
-<%= render "customer/shared/links" %>
+<div class="row mt-4">
+ 
+    <%= render "customer/shared/links" %><p>からログインしてください</p>
+</div>
 
-<h2>からログインしてください</h2>
+</div>
