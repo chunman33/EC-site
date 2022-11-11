@@ -1,4 +1,6 @@
 class Customer::ItemsController < ApplicationController
+  skip_before_action :authenticate_various_user, only: [:index] #顧客側の商品一覧に対してアクセス制限を解除
+  
   def index
     @items = Item.all
      @genres = Genre.all
