@@ -2,11 +2,11 @@ ja: # 日本語の設定
  enums: # enumの設定
   order: #モデル名
    payment_method: #カラム名
-    credit_card: "クレジットカード"  # [enumで番号と紐付けた要素]
-    transfer: "銀行振込" #0と1に紐づいていたcredit_cardとtransferが日本語化される
+    credit_card: 'クレジットカード'  # [enumで番号と紐付けた要素]
+    transfer: '銀行振込' #0と1に紐づいていたcredit_cardとtransferが日本語化される
     
    payment_status: #カラム名 4行目とインデントを揃えないと日本語化されない
-     wait_payment: '入金待ち'
+     wait_payment: "入金待ち"
      confirm_payment: '入金確認'
      making: '製作中'
      preparing_ship: '発送準備中'
